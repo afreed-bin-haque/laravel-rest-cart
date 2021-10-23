@@ -1,60 +1,69 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <x-jet-validation-errors class="mb-4" />
+      <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
+    <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('frontend/bootstrap5_css/bootstrap.min.css') }}" rel="stylesheet">
+    <!--Main CSS-->
+    <link href="{{ asset('frontend/main_css/register.css') }}" rel="stylesheet">
+    <!-- FAVICON -->
+  <link href="{{ asset('frontend/favicon.ico')}}" rel="shortcut icon">
+
+    <title>BD Cargo Test</title>
+  </head>
+  <body>
+  <div class="card">
+      <div class="card-header" style="background-color:#4895ef;color:white">
+    <h2>Registration</h2>
+  </div>
+  <div class="card-body">
+        <x-jet-validation-errors class="mb-4 text-danger" />
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-label="Name" required>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="col">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-label="Email" required>
             </div>
+            </div><br>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <div class="row">
+            <div class="col">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" required>
+                <input type="checkbox" onclick="passwordVisable()"/>
+                          <label class="control control-checkbox">Show password
+                        </label>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <div class="col">
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password" required>
             </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
-                </div>
-            @endif
-
+            </div>
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+                <div class="ml-4">
+            <button type="submit" class="button2">Register</button>
+            </div>
+            <a href="{{ route('login') }}" class="text-decoration-none text-success">Already registered?Login here</a>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        <script>
+function passwordVisable() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+        </body>
+</html>

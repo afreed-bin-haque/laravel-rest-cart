@@ -1,34 +1,56 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+      <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
+    <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('frontend/bootstrap5_css/bootstrap.min.css') }}" rel="stylesheet">
+    <!--Main CSS-->
+    <link href="{{ asset('frontend/main_css/login.css') }}" rel="stylesheet">
+    <!-- FAVICON -->
+  <link href="{{ asset('frontend/favicon.ico')}}" rel="shortcut icon">
 
+    <title>Forgot password</title>
+  </head>
+  <body>
+
+      <!--Log in container-->
+      <div class="card">
+      <div class="card-header" style="background-color:#52b788;color:white">
+    <h2>Forgot Password</h2>
+  </div>
+  <div class="card-body">
+  <x-jet-validation-errors class="mb-4 text-danger" />
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="text-success">
                 {{ session('status') }}
             </div>
         @endif
-
+        <p class="text-primary"> Type your email address and we will send you password reset link</p>
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
-
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label">Your old email</label>
+            <div class="col-sm-10">
+            <input type="email" class="form-control form-control-sm" id="email" name="email">
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-jet-button>
+            </div>
+            <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-sm btn-primary">Send link</button>
+            <button type="button" class="btn btn-sm btn-outline-dark" onclick="goBack()">Go back</button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        <script>
+function goBack() {
+  window.history.back();
+}
+</script>
+</body>
+</html>
