@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[IndexController::class,'index'])->name('/');
 
 Route::middleware(['auth:sanctum', 'web'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('users.dashboard_view');
 })->name('dashboard');
