@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" id="mainnav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainnav">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('dashboard') }}">BD Express Cargo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

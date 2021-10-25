@@ -15,6 +15,7 @@ class CreateProductDetailsTable extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
+            $table->string('product_id')->nullable();
             $table->string('product_name')->nullable();
             $table->string('product_image')->nullable();
             $table->string('origin')->nullable();

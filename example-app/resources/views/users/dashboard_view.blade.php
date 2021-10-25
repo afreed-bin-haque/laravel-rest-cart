@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="col">
+    <div class="col text-center">
         <h2>Your product list</h2>
     </div>
   </div>
@@ -29,7 +29,7 @@
             <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($orders->created_at)->diffForHumans() }}</small></p>
             <p> <span class="btn" style="background-color: #E2716D;color:white;border-radius:25px;text-align:center;">{{ $orders-> price }}</span> [Per pair]</p>
             <div class="d-grid gap-2 col-6 mx-auto">
-            <a href="#" class="btn btn-light"
+            <a href="{{ url('oder/list/'.$orders->product_id) }}" class="btn btn-light"
             style=" background-color:#E8E4D7;
             ;background-image: linear-gradient(45deg, to left,#E8E4D7 ,#EAE4D0 25%,  #f1dfa6 50%);
             color:black;

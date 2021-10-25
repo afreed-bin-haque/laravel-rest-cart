@@ -14,6 +14,8 @@
     <link href="{{ asset('frontend/main_css/dashboard.css') }}" rel="stylesheet">
     <!-- FAVICON -->
   <link href="{{ asset('frontend/favicon.ico')}}" rel="shortcut icon">
+  <!--Ajax script link-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>BD Cargo Test Dashboard</title>
   </head>
